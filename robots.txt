@@ -1,0 +1,47 @@
+# Awnings & Signs Unlimited — GitHub Pages build
+
+Upload **the contents of this folder** (not the folder itself) to the repo root.
+
+## Why you got a 404
+
+GitHub Pages serves `index.html` from the root of the published branch.
+A file called `Awnings and Signs Unlimited.dc.html` fails for three reasons:
+
+1. It is not named `index.html`, so there is no default document to serve.
+2. The spaces in the filename become `%20` in the URL.
+3. Jekyll (on by default) can ignore or rewrite paths.
+
+This build fixes all three: renamed to `index.html`, no spaces anywhere,
+and a `.nojekyll` file included.
+
+## Repo layout
+
+    index.html
+    custom-patio-covers.html
+    support.js
+    image-slot.js
+    .nojekyll
+    robots.txt
+    sitemap.xml
+    llms.txt
+    uploads/          (18 images — keep as a folder)
+
+## Enabling Pages
+
+Settings → Pages → Source: **Deploy from a branch** → `main` / `/ (root)` → Save.
+Live in about a minute at `https://<user>.github.io/<repo>/`.
+
+## Two things to check once it loads
+
+**Canonical URL.** Both pages declare `awningsandsignsunlimited.com` as canonical.
+On a `github.io` URL that tells Google the real page is elsewhere, so this copy
+will not rank. Fine for a preview — update `<link rel="canonical">` and `og:url`
+before treating it as the live site.
+
+**Form endpoint.** `const FORM_ENDPOINT = ''` near the bottom of each file is
+still empty, so submissions go nowhere.
+
+## Case sensitivity
+
+GitHub Pages is case-sensitive; your local machine probably is not. Every path
+here is lowercase and matches exactly — do not rename files after upload.
